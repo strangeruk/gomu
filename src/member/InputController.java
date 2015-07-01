@@ -5,6 +5,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import dto.MemberDTO;
 
@@ -20,8 +21,24 @@ public class InputController {
 	}
 	
 	@RequestMapping("/inputPro.gm")
-	public String formPro(@ModelAttribute MemberDTO dto) {
-		sqlMapper.insert("inputMember", dto);
+	public String formPro(@ModelAttribute MemberDTO member) {
+		System.out.println(member.getId());
+		sqlMapper.insert("inputMember", member);
 		return "/login/main.jsp";
+	}
+	
+	@RequestMapping("/confirmId.gm")
+	public ModelAndView confirm(@ModelAttribute MemberDTO member) {
+		int check = -1;
+		String id = (String)sqlMapper.queryForObject("confirmId", member.getId());
+		if(id != null) {
+			check = 1;
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("check", new Integer(check));
+		mv.addObject("id", member.getId());
+		mv.setViewName("/login/confirmId.jsp");
+		return mv;
 	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <title>Registration form</title>
@@ -37,10 +37,22 @@
         var inputForm = eval("document.inputForm");
         if(inputForm.pw.value != userinput.pw2.value)
         {
-            alert("비밀번호를 동일하게 입력하세요");
+            alert("비밀번호가 다릅니다.");
             return false;
         }
     }
+    
+    function openConfirmid(inputForm) {
+        if (inputForm.id.value == "") {
+            alert("아이디를 입력하세요");
+            return;
+        }
+        url = "confirmId.gm?id=" + inputForm.id.value ;
+        
+        open(url, "confirm", 
+        "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+    }
+    
     </script>
 </head>
 <body>
@@ -52,12 +64,17 @@
 			    		<h3 class="panel-title">회원가입</h3>
 			 			</div>
 			 			<div class="panel-body">
-			    		<form name="inputForm" action="loginPro.gm" method="post">
+			    		<form name="inputForm" action="inputPro.gm" method="post">
 			    			
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
 			    						<input type="text" name="id" class="form-control input-sm" placeholder="Id" required="required">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="button" name="confirm_id" class="btn btn-info btn-block" value="ID중복확인" OnClick="openConfirmid(this.form)" >
 			    					</div>
 			    				</div>
 			    			</div>
@@ -78,37 +95,37 @@
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			                <input type="text" name="name" class="form-control input-sm" placeholder="Name">
+			                <input type="text" name="name" class="form-control input-sm" placeholder="Name" required="required">
 			    					</div>
 			    				</div>
 			    			</div>
 			    			
 			    			<div class="form-group">
-			    				<input type="text" name="addr" class="form-control input-sm" placeholder="Address">
+			    				<input type="text" name="addr" class="form-control input-sm" placeholder="Address" required="required">
 			    			</div>
 			    			
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<input type="text" name="phone" class="form-control input-sm" placeholder="Phone">
+			    						<input type="text" name="phone" class="form-control input-sm" placeholder="Phone" required="required">
 			    					</div>
 			    				</div>
 			    			</div>
 			    			
 			    			<div class="form-group">
-			    				<input type="text" name="email" class="form-control input-sm" placeholder="Email Address">
+			    				<input type="text" name="email" class="form-control input-sm" placeholder="Email Address" required="required">
 			    			</div>
 			    			
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<input type="text" name="birth" class="form-control input-sm" placeholder="Birth">
+			    						<input type="text" name="birth" class="form-control input-sm" placeholder="Birth" required="required">
 			    					</div>
 			    				</div>
 			    			</div>
 			    			<div class="form-group">
-				    			여자&nbsp;<input type="radio" name="sex" id="female" value="female">&nbsp;&nbsp;
-				    			남자&nbsp;<input type="radio" name="sex" id="male" value="male"> 
+				    			여자&nbsp;<input type="radio" name="sex" id="female" value="female" required="required">&nbsp;&nbsp;
+				    			남자&nbsp;<input type="radio" name="sex" id="male" value="male" required="required"> 
 			    			</div>
 			    			<input type="submit" value="Register" class="btn btn-info btn-block">
 			    		

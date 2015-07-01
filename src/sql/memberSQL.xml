@@ -19,8 +19,12 @@
 		select pw from member where id = #id#
 	</select>
 	
+	<select id="confirmId" resultClass="String" parameterClass="String">
+		select id from member where id = #id#
+	</select>
+	
 	<insert id="inputMember" parameterClass="member">
-		insert member into values (
+		insert into member values (
 			member_seq.nextVal,
 			#id#,
 			#pw#,
