@@ -9,4 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+ 		<servlet-name>gomu</servlet-name>
+ 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+ 	</servlet>
+ 
+ 
+	<servlet-mapping>
+		<servlet-name>gomu</servlet-name>
+		<url-pattern>*.gm</url-pattern>
+	</servlet-mapping>
 </web-app>

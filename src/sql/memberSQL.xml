@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	<typeAlias alias="member" type="dto.MemberDTO" />
+	
+	<resultMap class="member" id="memberRes">
+		<result property="id" column="id"/>
+		<result property="pw" column="pw"/>
+		<result property="name" column="name"/>
+		<result property="addr" column="addr"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+		<result property="birth" column="birth"/>
+		<result property="sex" column="sex"/>
+		<result property="join_date" column="join_date"/>
+	</resultMap>
+</sqlMap>
