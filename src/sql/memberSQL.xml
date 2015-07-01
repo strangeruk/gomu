@@ -13,9 +13,24 @@
 		<result property="birth" column="birth"/>
 		<result property="sex" column="sex"/>
 		<result property="join_date" column="join_date"/>
-	</resultMap>
+	</resultMap> 
 	
 	<select id="confirmPw" resultClass="String">
 		select pw from member where id = #id#
 	</select>
+	
+	<insert id="inputMember" parameterClass="member">
+		insert member into values (
+			member_seq.nextVal,
+			#id#,
+			#pw#,
+			#name#,
+			#addr#,
+			#phone#,
+			#email#,
+			#birth#,
+			#sex#,
+			sysdate
+		)
+	</insert>
 </sqlMap>
