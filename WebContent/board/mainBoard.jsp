@@ -15,5 +15,6 @@
 		<td><input type="reset" name="reset">
 	</tr>
 </table>
+<hr>
 </body>
 </html>
