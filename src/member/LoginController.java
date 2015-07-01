@@ -1,5 +1,5 @@
 package member;
 
-public class LoginController {
-
+public class LoginController{
+	private String test;
 }
