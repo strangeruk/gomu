@@ -19,16 +19,27 @@
 	</bean> -->
 	
 	<context:component-scan base-package="member"></context:component-scan>
+	<bean id="member" class="dto.MemberDTO"></bean>
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="-1"/> <!-- -1은 업로드 크기의 제한이 없음 무한대임 -->
 		<property name="defaultEncoding" value="euc-kr"/>
 	</bean>
 
+	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource"
+                           destroy-method="close"
+                           p:driverClassName="oracle.jdbc.driver.OracleDriver"
+                           p:url="jdbc:oracle:thin:@khmaster.iptime.org:7000:orcl"
+                           p:username="projecta22" p:password="projecta22"/>
+	
 	
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="configLocation" value="/WEB-INF/classes/sqlMapConfig.xml"/>
+		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	
+	
 	<bean id="SqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
 		<property name="sqlMapClient" ref="sqlMapClient"/>
 	</bean>

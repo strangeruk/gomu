@@ -9,7 +9,7 @@ public class MemberDTO {
 	private String addr;
 	private int phone;
 	private String email;
-	private Timestamp birth;
+	private String birth;
 	private String sex;
 	private Timestamp join_date;
 	public String getId() {
@@ -48,10 +48,10 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Timestamp getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Timestamp birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getSex() {
